@@ -240,6 +240,7 @@ div.carousel {
     - ... there's a reason crop tools are popular in image editors
    */
   width: 150px; 
+  height: 150px;
 }
 
 .prev,
@@ -263,5 +264,4 @@ div.carousel {
 
 .prev:hover,
 .next:hover {
-  /* Pick a good background colour for your hover pseudoclass */
-}
+  background-color: green;}
