@@ -89,6 +89,7 @@ form {
 
 .header h1 {
   display: block;
+  border: 2px dashed;
   /* this will push other blocks out of the way */
 
   /* colors */
@@ -157,7 +158,8 @@ form {
   background-color: rgba(130, 0, 139, 0.8);
   font-size: 1.2rem;
   font-weight: 600;
-  max-width: 736px;
+  max-width: 1700px;
+  border: 2px dashed;
 }
 
 .footer a {
