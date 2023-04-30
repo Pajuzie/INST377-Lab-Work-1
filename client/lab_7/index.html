@@ -1,0 +1,53 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prince Ajuzie labs</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1>Prince Ajuzie labs</h1>
+      </header>
+      <div class="container">
+        <div class="left_section box">
+          <h2>Form Inputs</h2>
+          <div class="Resturant_name box">
+            <h5>Resturant name</h5>
+            <form class="box main_box">
+              <button type="button" id="data_load">Load County Data</button>
+              <div>
+                <label for="resto">Resturant name</label>
+                <input type="text" name="resto" id="resto" />
+              </div>
+              <div class="buttons">
+                <button type="button" id="filter">Filter Data</button>
+                <button type="button" id="generate">Genereate List</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="right_section box">
+          <h3>Local Resturant List</h3>
+          <ol class="box" id="resturant_list">
+            A list of local resturants
+          </ol>
+          <div class="lds-ellipsis" id="data_load_animation">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        Pajuzie<a href="http://github.com/Pajuzie/INST377-Lab-Work-1"
+          >UMD INST377 Account</a
+        >
+      </footer>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
