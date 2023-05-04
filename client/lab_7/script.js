@@ -37,15 +37,23 @@ function getRandomIntInclusive(min, max) {
     const filterbutton = document.querySelector('#filter_button')
     const LoadDataButton = document.querySelector('#data_load')
     const generateListButton = document.querySelector('#generate')
-    
+    const textField = document.querySelector('#resto');
+
     const loadAnimation = document.querySelector('#data_load_animation');
     loadAnimation.style.display = 'none';
-    
+    generateListButton.style.display = 'inline-block';
+
+    let storedList = []
+  
+    }
+
     let currentList = [];
     
     LoadDataButton.addEventListener('click', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
+  
       console.log('form submission'); // this is substituting for a "breakpoint"
       loadAnimation.style.display = 'inline-block';
+    
       /*
         ## GET requests and Javascript
           We would like to send our GET request so we can control what we do with the results
@@ -57,15 +65,17 @@ function getRandomIntInclusive(min, max) {
       // this is the preferred way to handle form data in JS in 2022
       const formData = new FormData(submitEvent.target); // get the data from the listener target
       const formProps = Object.fromEntries(formData); // Turn it into an object
-  
+    }
       
   
       const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
       
-      currentList = await results.json();
+      storedList = await results.json();
+      if (storedList.length > 0) {
+        generateListButton.classList.remove('hidden');
   
       loadAnimation.style.display = 'none';
-      console.table(currentList);
+      console.table(storedList);
      
     });
   
@@ -77,15 +87,24 @@ function getRandomIntInclusive(min, max) {
   
       console.log(formProps);
       const newList = filterList(currentList, formProps.resto);
-      injectHTML(newList);
       console.log(newList);
+      injectHTML(newList);
+      
   
     })
   
     generateListButton.addEventListener('click', (event) => {
       console.log('generate new list');
-      const resturantsList = cutResturantList(currentList);
-      injectHTML(resturantsList);
+      currentList = cutResturantList(storedList);
+      console.log(currentList)
+      injectHTML(currentList);
+    })
+
+    textField.addEventListener('input', (event) => {
+        console.log('input', event.target.value);
+        const newList = filterList(currentList, event.target.value);
+        console.log(newList);
+        injectHTML(newList);
     })
   }
   
