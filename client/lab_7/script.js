@@ -41,6 +41,7 @@ async function mainEvent() {
 
   const loadAnimation = document.querySelector("#data_load_animation");
   loadAnimation.style.display = "none";
+  generateListButton.classList.add("hidden");
 
   let storedList = [];
   let currentList = [];
@@ -65,7 +66,10 @@ async function mainEvent() {
       "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
     );
 
-    storedtList = await results.json();
+    storedList = await results.json();
+    if (storedList.length > 0) {
+      generateListButton.classList.remove("hidden");
+    }
 
     loadAnimation.style.display = "none";
     console.table(storedList);
