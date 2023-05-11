@@ -37,10 +37,12 @@ async function mainEvent() {
   const filterbutton = document.querySelector("#filter_button");
   const LoadDataButton = document.querySelector("#data_load");
   const generateListButton = document.querySelector("#generate");
+  const textField = document.querySelector("#resto");
 
   const loadAnimation = document.querySelector("#data_load_animation");
   loadAnimation.style.display = "none";
 
+  let storedList = [];
   let currentList = [];
 
   LoadDataButton.addEventListener("click", async (submitEvent) => {
@@ -63,10 +65,10 @@ async function mainEvent() {
       "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
     );
 
-    currentList = await results.json();
+    storedtList = await results.json();
 
     loadAnimation.style.display = "none";
-    console.table(currentList);
+    console.table(storedList);
   });
 
   filterbutton.addEventListener("click", (event) => {
@@ -83,8 +85,16 @@ async function mainEvent() {
 
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
-    const resturantsList = cutResturantList(currentList);
-    injectHTML(resturantsList);
+    currentList = cutResturantList(storedList);
+    console.log(currentList);
+    injectHTML(currentList);
+  });
+
+  textField.addEventListener("input", (event) => {
+    console.log("input", event.target.value);
+    const newList = filterList(currentList, event.target.value);
+    injectHTML(newList);
+    console.log(newList);
   });
 }
 
